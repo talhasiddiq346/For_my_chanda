@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Meri Chanda 🌙</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia',serif;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.page{display:none;width:100vw;height:100vh;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;position:relative;animation:fadeIn .8s ease;}
+.page.active{display:flex;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+#p1{background:linear-gradient(135deg,#ffd6e7,#e8d5f5,#ffd6e7);}
+#p2{background:linear-gradient(135deg,#fff9e6,#ffe8b3,#ffdce0);}
+#p3{background:linear-gradient(135deg,#e8f5e9,#d4edda,#e8d5f5);}
+#p4{background:linear-gradient(135deg,#e3f2fd,#d0e8ff,#ffd6e7);}
+#p5{background:linear-gradient(135deg,#fff0e6,#ffe0cc,#ffd6e7);}
+#p6{background:linear-gradient(135deg,#e6ffe6,#ccf2cc,#d4edda);}
+#p7{background:linear-gradient(135deg,#1a0533,#3a0d5e,#1a0533);}
+
+.card{background:rgba(255,255,255,0.55);backdrop-filter:blur(10px);border-radius:24px;padding:32px 28px;max-width:540px;width:100%;box-shadow:0 8px 32px rgba(180,100,180,0.15);border:1.5px solid rgba(255,255,255,0.7);z-index:10;max-height:88vh;overflow-y:auto;}
+#p7 .card{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,200,255,0.3);}
+
+/* Scrollbar */
+.card::-webkit-scrollbar{width:4px;}
+.card::-webkit-scrollbar-track{background:transparent;}
+.card::-webkit-scrollbar-thumb{background:rgba(180,100,180,0.3);border-radius:4px;}
+
+h1{font-size:clamp(1.3rem,4vw,1.9rem);margin-bottom:14px;line-height:1.3;}
+#p1 h1{color:#b5007a;}
+#p2 h1{color:#c07000;}
+#p3 h1{color:#3a7a40;}
+#p4 h1{color:#1a5fa8;}
+#p5 h1{color:#c0440a;}
+#p6 h1{color:#1a7a40;}
+#p7 h1{color:#f9c6ff;text-shadow:0 0 20px #c060ff;}
+
+p{font-size:clamp(0.88rem,2.5vw,1.05rem);line-height:1.95;color:#444;text-align:justify;}
+#p7 p{color:#f0d0ff;text-align:justify;}
+
+/* "I love you" sparkle style */
+.iloveyou{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.1rem,3.5vw,1.45rem);
+  background:linear-gradient(90deg,#ff4da6,#c000c0,#ff4da6);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 2s linear infinite;
+  display:inline-block;
+  position:relative;
+}
+#p7 .iloveyou{
+  background:linear-gradient(90deg,#ff80ff,#d060ff,#ff80ff);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 2s linear infinite;
+  font-size:clamp(1.2rem,4vw,1.6rem);
+  text-shadow:none;
+}
+@keyframes shimmer{to{background-position:200% center}}
+
+.progress{display:flex;gap:8px;margin-bottom:18px;z-index:10;}
+.dot{width:9px;height:9px;border-radius:50%;background:rgba(180,100,180,0.3);transition:background .4s;}
+.dot.done{background:#c060c0;}
+#p7 .dot{background:rgba(255,200,255,0.2);}
+#p7 .dot.done{background:#e080ff;}
+
+.btn{margin-top:22px;padding:12px 36px;border:none;border-radius:50px;font-size:clamp(0.9rem,2.5vw,1rem);cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s;}
+.btn:hover{transform:scale(1.06);box-shadow:0 4px 20px rgba(180,80,180,0.3);}
+.btn:active{transform:scale(0.97);}
+#p1 .btn{background:linear-gradient(135deg,#ff80c0,#c060c0);color:#fff;}
+#p2 .btn{background:linear-gradient(135deg,#ffb340,#e07000);color:#fff;}
+#p3 .btn{background:linear-gradient(135deg,#60c070,#208030);color:#fff;}
+#p4 .btn{background:linear-gradient(135deg,#60a0e0,#1060c0);color:#fff;}
+#p5 .btn{background:linear-gradient(135deg,#ff8060,#c04000);color:#fff;}
+#p6 .btn{background:linear-gradient(135deg,#60c060,#108030);color:#fff;}
+#p7 .btn{background:linear-gradient(135deg,#d060ff,#8020c0);color:#fff;font-size:clamp(0.95rem,2.5vw,1.1rem);padding:14px 44px;}
+
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;}
+.particle{position:absolute;animation:float linear infinite;opacity:0.7;}
+@keyframes float{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:.8}90%{opacity:.6}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+
+.moon{font-size:clamp(3rem,10vw,5rem);margin-bottom:8px;animation:moonGlow 2s ease-in-out infinite alternate;}
+@keyframes moonGlow{from{text-shadow:0 0 20px #d060ff,0 0 40px #9020c0}to{text-shadow:0 0 40px #f0a0ff,0 0 80px #c060e0}}
+
+@media(max-height:650px){
+  .card{padding:20px 18px;}
+  h1{margin-bottom:8px;}
+  .btn{margin-top:14px;padding:10px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Page 1 -->
+<div class="page active" id="p1">
+  <div class="particles" id="parts1"></div>
+  <div class="progress" id="prog1"></div>
+  <div class="card">
+    <h1>Pehla Qadam 🌙</h1>
+    <p>Aap meri zindagi ka wo hissa ho jo har guzartay din ke saath mere dil mein aur jagah bana leta hai. Mujhe aaj bhi wo din yaad hai jab hum pehli baar milay thay aur bas hans hans ke choti choti baatein kar rahe thay. Wo lamhay itnay haseen thay ke waqt ka pata hi nahi chala. Main chahta hoon ke aap ko hamesha waisa hi sukoon aur khushi miley jo humein un dino mein milti thi. Aap mere liye sab se important ho aur <span class="iloveyou">I love you</span>, isliye ye chota sa tohfa sirf aap ki muskaan ke liye banaya hai.</p>
+    <button class="btn" onclick="goTo(2)">Start ✨</button>
+  </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="p2">
+  <div class="particles" id="parts2"></div>
+  <div class="progress" id="prog2"></div>
+  <div class="card">
+    <h1>Sab Se Khubsurat Ehsas ✨</h1>
+    <p>Aapki hansi mere liye kisi tohfay se kam nahi hai, ye meri puri duniya ko roshan kar deti hai. Wo din jab hum mazaq karte thay aur itna hanste thay ke saans lena mushkil ho jata tha, wo meri zindagi ki sab se pyari yaadein hain. Main hamesha yehi koshish karunga ke aapki aankhon mein wo hi purani chamak aur chehre par wahi be-fikri wali hansi hamesha barkarar rahe. Aap mere liye sab se special ho aur <span class="iloveyou">I love you</span> itna ke aapki khushi hi ab mera asli sukoon hai.</p>
+    <button class="btn" onclick="goTo(3)">Aage Chalein →</button>
+  </div>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="p3">
+  <div class="particles" id="parts3"></div>
+  <div class="progress" id="prog3"></div>
+  <div class="card">
+    <h1>Ek Choti Si Baat 🌸</h1>
+    <p>Mujhe dil se afsos hai ke kabhi kabhi main wo sab nahi kar paya jo aap deserve karti thi. Wo waqt jab hum saath thay aur meri kisi baat se aap ko bura laga ya aap uncomfortable huin, uske liye main dil se maafi chahta hoon. Main bas ye chahta hoon ke aap ye samjho ke meri niyat hamesha sirf aap ki bhalayi aur khushi ke liye thi. Aap mere liye sab se important ho aur <span class="iloveyou">I love you</span> itna ke ab main har cheez ko behtar aur sukoon bhara banana chahta hoon.</p>
+    <button class="btn" onclick="goTo(4)">Aage Chalein →</button>
+  </div>
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="p4">
+  <div class="particles" id="parts4"></div>
+  <div class="progress" id="prog4"></div>
+  <div class="card">
+    <h1>Mera Roshan Sitara ⭐</h1>
+    <p>Meri Chanda, aapki choti choti caring baatein aur wo andaz jis se aap mera khayal rakhti thi, wo meri boring life ko bilkul badal deta hai. Mujhe yaad hai jab aap ne pehli baar mera mood theek kiya tha aur sirf ek smile se meri saari pareshani khatam kar di thi. Wo chotay chotay moments hi meri sab se badi daulat hain aur main unhein hamesha sambhal kar rakhunga. Aap mere liye sab se important ho aur <span class="iloveyou">I love you</span> kyunke aap jaisa dil kisi aur ka nahi ho sakta.</p>
+    <button class="btn" onclick="goTo(5)">Aage Chalein →</button>
+  </div>
+</div>
+
+<!-- Page 5 -->
+<div class="page" id="p5">
+  <div class="particles" id="parts5"></div>
+  <div class="progress" id="prog5"></div>
+  <div class="card">
+    <h1>Aap Meri Priority Ho ❤️</h1>
+    <p>Main ab sirf baaton se nahi, balkay apne har amal aur har action se ye sabit karna chahta hoon ke aap meri zindagi ki sab se badi priority ho. Jab hum sirf saath baithtay thay aur khamoshi mein bhi ek dusre ki baatein samajh letay thay, wo sukoon mujhe kahin aur nahi mila. Main aap ke har jazbaat ki izzat karta hoon aur hamesha karta rahunga. Aap mere liye sab se important ho aur <span class="iloveyou">I love you</span>, aapka sukoon hi ab meri zindagi ka maqsad hai.</p>
+    <button class="btn" onclick="goTo(6)">Aage Chalein →</button>
+  </div>
+</div>
+
+<!-- Page 6 -->
+<div class="page" id="p6">
+  <div class="particles" id="parts6"></div>
+  <div class="progress" id="prog6"></div>
+  <div class="card">
+    <h1>Bas Aap Ki Khushi 🌸</h1>
+    <p>Main chahta hoon ke hamare darmiyan wahi purana sukoon aur wahi izzat hamesha rahe jo humein ek dusre ke qareeb layi thi. Main aap par kisi bhi qism ka pressure nahi dalna chahta, na hi koi purani baat yaad dila kar aap ko pareshan karna chahta hoon. Main bas aap ki zindagi mein thodi si aur khushi aur thoda sa aur sukoon add karna chahta hoon jahan aap bilkul mehfooz feel karein. Aap mere liye sab se important ho aur <span class="iloveyou">I love you</span>, main hamesha aap ke liye yahan maujood hoon.</p>
+    <button class="btn" onclick="goTo(7)">Aakhri Lamha →</button>
+  </div>
+</div>
+
+<!-- Page 7 -->
+<div class="page" id="p7">
+  <div class="particles" id="parts7"></div>
+  <canvas id="fwCanvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas>
+  <div class="progress" id="prog7"></div>
+  <div class="card">
+    <div class="moon">🌙</div>
+    <h1>Sirf Tum 🌙</h1>
+    <p>Meri Chanda, aap meri poori duniya ho aur hamesha rahogi. Main hamesha ye koshish karunga ke main wo insaan ban sakoon jo aap ke chehre par hamesha muskurahat laye aur aap ke dil ko sukoon de. Wo saaray special moments jab hum ek dusre ko baghair kahe samajh jatay thay, wo mere dil ke sab se qareeb hain. Aap mere liye sab se important ho aur <span class="iloveyou">I love you</span> itna ke main lafzon mein bayan nahi kar sakta. Main har haal mein aap ke liye yahan hoon.</p>
+    <button class="btn" onclick="goTo(1)">🌸 Phir Se Dekhein 🌸</button>
+  </div>
+</div>
+
+<script>
+const total=7;
+const emojis=[
+  ['🌸','💖','✨','🌷','💗'],
+  ['🎈','💛','🌟','🎀','✨'],
+  ['🌿','💚','🌸','⭐','🌺'],
+  ['⭐','💙','🌸','✨','❄️'],
+  ['😊','❤️','🌸','💫','😄'],
+  ['🌿','💛','🍃','🌻','✨'],
+  ['🌙','💜','⭐','✨','💫']
+];
+
+function buildProgress(page){
+  const el=document.getElementById('prog'+page);
+  el.innerHTML='';
+  for(let i=1;i<=total;i++){
+    const d=document.createElement('div');
+    d.className='dot'+(i<=page?' done':'');
+    el.appendChild(d);
+  }
+}
+
+function buildParticles(page,count=18){
+  const c=document.getElementById('parts'+page);
+  c.innerHTML='';
+  const set=emojis[page-1];
+  for(let i=0;i<count;i++){
+    const s=document.createElement('span');
+    s.className='particle';
+    s.textContent=set[Math.floor(Math.random()*set.length)];
+    s.style.cssText=`left:${Math.random()*100}%;font-size:${14+Math.random()*16}px;animation-duration:${5+Math.random()*8}s;animation-delay:${Math.random()*6}s;`;
+    c.appendChild(s);
+  }
+}
+
+const canvas=document.getElementById('fwCanvas');
+const ctx=canvas.getContext('2d');
+let fwInterval;
+
+function resizeFW(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeFW();
+window.addEventListener('resize',resizeFW);
+
+function launchFW(){
+  const x=Math.random()*canvas.width;
+  const y=Math.random()*canvas.height*0.6;
+  const hue=Math.random()*360;
+  const pts=[];
+  for(let i=0;i<60;i++){
+    const a=Math.random()*Math.PI*2,sp=2+Math.random()*4;
+    pts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,hue});
+  }
+  function draw(){
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=0.05;p.life-=0.018;
+      if(p.life>0){ctx.save();ctx.globalAlpha=p.life;ctx.fillStyle=`hsl(${p.hue},100%,65%)`;ctx.beginPath();ctx.arc(p.x,p.y,2.5,0,Math.PI*2);ctx.fill();ctx.restore();}
+    });
+    if(pts.some(p=>p.life>0))requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function startFW(){resizeFW();fwInterval=setInterval(()=>{ctx.clearRect(0,0,canvas.width,canvas.height);launchFW();},900);}
+function stopFW(){clearInterval(fwInterval);ctx.clearRect(0,0,canvas.width,canvas.height);}
+
+function goTo(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('p'+n);
+  pg.classList.add('active');
+  // scroll card to top
+  const card=pg.querySelector('.card');
+  if(card)card.scrollTop=0;
+  buildProgress(n);
+  buildParticles(n);
+  if(n===7)startFW();else stopFW();
+}
+
+for(let i=1;i<=total;i++){buildProgress(i);buildParticles(i);}
+</script>
+</body>
+</html>
